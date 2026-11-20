@@ -144,6 +144,19 @@ async function callGem(k,p){
   const j=await r.json();
   return (isG||isO)?j.choices.at(0).message.content:j.candidates.at(0).content.parts.at(0).text;
 }
+async function callGem(k,p){
+  k=k.replace(/\s+/g,"");
+  const isG=k.startsWith("gsk_"),isO=k.startsWith("sk-or-");
+  if(!isG&&!isO&&!k.startsWith("AIza"))throw new Error("Prefixo não reconhecido: "+k.slice(0,6));
+  const u=isG?("https://"+"://groq.com"):isO?("https://"+"openrouter.ai/api/v1/chat/completions"):("https://"+"://googleapis.com"+encodeURIComponent(k));
+  const h={"Content-Type":"application/json"};
+  if(isG||isO)h.Authorization="Bearer "+k;
+  const b=(isG||isO)?{model:isG?"llama-3.3-70b-versatile":"openrouter/free",messages:Array.of({role:"user",content:p})}:{contents:Array.of({parts:Array.of({text:p})})};
+  const r=await fetch(u,{method:"POST",headers:h,body:JSON.stringify(b)});
+  if(!r.ok){const e=await r.text();throw new Error("HTTP "+r.status+": "+e.slice(0,100))}
+  const j=await r.json();
+  return (isG||isO)?j.choices.at(0).message.content:j.candidates.at(0).content.parts.at(0).text;
+}
 async function sendAct(){
   const inp=document.getElementById("p-inp"),act=inp.value.trim();if(!act)return;
   inp.value="";ST.lg.push({t:"p",tx:act});sv();
@@ -156,9 +169,11 @@ async function sendAct(){
   }catch(e){ST.lg.push({t:"gm",tx:"Erro API.",ta:e.message})}
   finally{b.disabled=false;b.textContent="Enviar Ação";sv()}
 }
-function svKey(){const v=document.getElementById("api-in").value.trim();if(v){localStorage.setItem("apx_key",v);tst("Chave salva!")}}
-async function tstKey(){const v=document.getElementById("api-in").value.trim()||localStorage.getItem("apx_key");if(!v)return tst("Cole a chave!");try{const r=await callGem(v,"Responda: OK");tst("API: "+r.slice(0,15))}catch(e){alert(e.message)}}
+function svKey(){const v=document.getElementById("api-in").value.replace(/\s+/g,"");if(v){localStorage.setItem("apx_key",v);tst("Chave salva!")}}
+async function tstKey(){const v=(document.getElementById("api-in").value||localStorage.getItem("apx_key")||"").replace(/\s+/g,"");if(!v)return tst("Cole a chave!");try{const r=await callGem(v,"Responda: OK");tst("API: "+r.slice(0,15))}catch(e){alert("Detalhe: "+e.message)}}
 function exp6B(){navigator.clipboard?.writeText(`Zero Nv.${ST.f.lv} | HP ${ST.f.hp} | CP ${ST.f.cp}`);tst("Copiado!")}
 function rstAll(){if(confirm("Resetar?")){localStorage.removeItem("apx_v4");location.reload()}}
 const sk=localStorage.getItem("apx_key");if(sk)document.getElementById("api-in").value=sk;rnd();
 </script></body></html>
+
+
