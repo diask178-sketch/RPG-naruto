@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>APEX Naruto V4</title>
+<title>APEX Naruto V4 — v1.6.0</title>
 <style>
 :root{--bg:#0d1117;--panel:#161b22;--alt:#1f2630;--bd:#30363d;--txt:#e6edf3;--mut:#8b949e;--acc:#29b6f6;--wtr:#29b6f6;--lgt:#ffca28;--kek:#ff4081;--yin:#b388ff;--yng:#ffd54f;--phy:#80cbc4;--dng:#f85149}
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
@@ -20,6 +20,7 @@ body{background:var(--bg);color:var(--txt);font-size:14px;line-height:1.4;paddin
 .tb{background:var(--panel);border:1px solid var(--bd);color:var(--mut);padding:4px 8px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
 .tb.on-y{border-color:var(--yin);color:var(--yin);background:rgba(179,136,255,.15)}.tb.on-w{border-color:var(--wtr);color:var(--wtr);background:rgba(41,182,246,.15)}
 .tb.on-l{border-color:var(--lgt);color:var(--lgt);background:rgba(255,202,40,.15)}.tb.on-p{border-color:var(--phy);color:var(--phy);background:rgba(128,203,196,.15)}
+.tb.on-k{border-color:var(--kek);color:var(--kek);background:rgba(255,64,129,.18)}
 .tabs{display:grid;grid-template-columns:repeat(5,1fr);background:var(--panel);border-bottom:1px solid var(--bd);position:sticky;top:94px;z-index:40}
 .nt{background:none;border:none;border-bottom:2px solid transparent;color:var(--mut);padding:9px 2px;font-size:11px;font-weight:700}
 .nt.act{color:var(--acc);border-bottom-color:var(--acc);background:rgba(41,182,246,.08)}
@@ -31,32 +32,50 @@ body{background:var(--bg);color:var(--txt);font-size:14px;line-height:1.4;paddin
 .lt{background:var(--panel);border-left:3px solid var(--acc);padding:5px 8px;border-radius:4px;font-size:12px;color:#b1bac4;margin-top:5px}
 textarea,input,select{width:100%;background:#090c10;border:1px solid var(--bd);color:var(--txt);border-radius:7px;padding:8px;font-size:13px;margin-bottom:7px}
 .br{display:flex;gap:6px;flex-wrap:wrap}.btn{flex:1;min-width:80px;background:var(--alt);border:1px solid var(--bd);color:var(--txt);padding:8px;border-radius:7px;font-size:12px;font-weight:700}
-.bp{background:#1f6feb;border-color:#388bfd;color:#fff}.bs{background:#238636;border-color:#2ea043;color:#fff}.bd{background:#da3633;border-color:#f85149;color:#fff}.bw2{background:#9e6a03;border-color:#d29922;color:#fff}
+.bp{background:#1f6feb;border-color:#388bfd;color:#fff}.bs{background:#238636;border-color:#2ea043;color:#fff}.bd{background:#da3633;border-color:#f85149;color:#fff}.bw2{background:#9e6a03;border-color:#d29922;color:#fff}.bk{background:#892555;border-color:#ff4081;color:#fff}
 .sg{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;text-align:center}.sb{background:#090c10;border:1px solid var(--bd);border-radius:7px;padding:5px 2px}.sv{font-size:15px;font-weight:800}.scap{color:var(--lgt)}
 .dg{display:grid;grid-template-columns:1fr 1fr;gap:5px;font-size:12px}.di{background:#090c10;border:1px solid var(--bd);padding:6px;border-radius:6px}
 .jc{background:#090c10;border:1px solid var(--bd);border-left:3px solid var(--wtr);border-radius:7px;padding:8px;margin-bottom:6px}.jc.el-Raio{border-left-color:var(--lgt)}.jc.el-Tempestade{border-left-color:var(--kek)}
 .jh{display:flex;justify-content:space-between;font-weight:700;font-size:13px}.jm{font-size:11px;color:var(--phy);font-weight:600;margin:2px 0}.jd{font-size:12px;color:var(--mut)}
+.pw-item{background:#090c10;border:1px solid var(--bd);border-radius:6px;padding:6px 8px;margin-top:5px}
 .ep{background:#1c1214;border:1px solid #5c2226;border-radius:7px;padding:7px;margin-bottom:6px;font-size:12px}
 .tst{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1f6feb;color:#fff;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;z-index:999;display:none}
 </style></head><body>
 <div class="top">
   <div class="row"><b id="h-nm" style="font-size:15px">Zero (Nv.12/18)</b><div><span class="bdg" id="h-pa">PA: 6</span> <span class="bdg" id="h-arc">Arco 2 ⏳ 2/6</span> <span class="bdg" id="h-ryo">6.150 Ryō</span></div></div>
   <div class="bars"><div class="bw"><div class="bf" id="b-hp" style="width:100%;background:var(--dng)"></div><div class="bt"><span>❤️ HP</span><span id="h-hp">868/868</span></div></div><div class="bw"><div class="bf" id="b-cp" style="width:100%;background:var(--wtr)"></div><div class="bt"><span>🔵 CP</span><span id="h-cp">1032/1032</span></div></div></div>
-  <div class="togs"><button class="tb" id="t-nev" onclick="tog('nevoa')">🔮 Névoa: OFF</button><button class="tb" id="t-flu" onclick="tog('fluxo')">💧 Fluxo: OFF</button><button class="tb" id="t-fio" onclick="cycFio()">🗡 Fio: OFF</button><button class="tb" id="t-pos" onclick="cycPos()">🎯 Pos: NORM</button><button class="tb" onclick="tickTurn()">⏱ +1 Turno</button></div>
+  <div class="togs"><button class="tb" id="t-nev" onclick="cycNev()">🔮 Névoa: OFF</button><button class="tb" id="t-flu" onclick="tog('fluxo')">💧 Fluxo: OFF</button><button class="tb" id="t-fio" onclick="cycFio()">🗡 Fio: OFF</button><button class="tb" id="t-pos" onclick="cycPos()">🎯 Pos: NORM</button><button class="tb" onclick="tickTurn()">⏱ +1 Turno</button></div>
 </div>
 <div class="tabs"><button class="nt act" onclick="tab('p-cmb',this)">⚔ Combate</button><button class="nt" onclick="tab('p-fch',this)">📊 Ficha</button><button class="nt" onclick="tab('p-frj',this)">🛠 Forja</button><button class="nt" onclick="tab('p-db',this)">📖 Databook</button><button class="nt" onclick="tab('p-cfg',this)">⚙ API/Save</button></div>
 <div class="cnt">
   <div id="p-cmb" class="pane act"><div class="crd" id="cmp-crd" style="display:none"><div class="ct"><span>⚔️ Campo</span><button class="btn bd" style="flex:0;padding:3px 8px" onclick="clrEn()">Encerrar</button></div><div id="en-lst"></div></div><div class="crd"><div class="ct"><span>📜 Crônica & Ação Livre</span><button class="btn" style="flex:0;padding:3px 8px" onclick="clrLog()">Limpar</button></div><div class="log" id="c-log"></div><textarea id="p-inp" rows="3" placeholder="Escreva sua ação livremente..."></textarea><div class="br"><button class="btn bp" id="b-snd" onclick="sendAct()">Enviar Ação</button><button class="btn" onclick="restAll()">🧪 Descansar</button><button class="btn" onclick="advArc()">⏭ Arco</button></div></div></div>
-  <div id="p-fch" class="pane"><div class="crd"><div class="ct"><span>⚡ Atributos (Teto <span id="l-cap">26</span> | PA: <span id="l-pa">6</span>)</span><span style="font-size:11px;color:var(--mut)" id="l-xp">400/1200</span></div><div class="sg" id="st-grd"></div><div class="br" style="margin-top:7px"><button class="btn" onclick="addXp(300)">+300 XP</button><button class="btn" onclick="addXp(800)">+800 XP (Subir Nv)</button></div></div><div class="crd"><div class="ct"><span>⚔️ Status Derivados</span></div><div class="dg" id="dv-grd"></div></div><div class="crd"><div class="ct"><span>🔥 Poderes & Arma</span></div><div id="pw-sum" style="font-size:12px"></div></div><div class="crd"><div class="ct"><span>🌀 Grimório (<span id="l-slt">6/7</span>)</span><span style="font-size:11px;color:var(--lgt)">Máx <span id="l-rnk">B</span></span></div><div id="gr-lst"></div></div></div>
-  <div id="p-frj" class="pane"><div class="crd"><div class="ct"><span>📥 Importar Bloco do Chat</span></div><textarea id="imp-txt" rows="4" placeholder="Cole o JSON gerado no chat aqui..."></textarea><button class="btn bs" onclick="impBlk()">📥 Aplicar na Ficha / Grimório</button></div><div class="crd"><div class="ct"><span>🛠 Forja Rápida</span></div><input id="f-nm" placeholder="Nome do Jutsu"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px"><select id="f-vec"><option>Ninjutsu</option><option>Kenjutsu</option><option>Taijutsu</option><option>Hibrido</option><option>Genjutsu</option><option>Suporte</option></select><select id="f-elm"><option value="Raio">⚡ Raio</option><option value="Agua">💧 Água</option><option value="Tempestade">🧬 Tempestade</option></select><select id="f-rnk"><option value="D">Rank D</option><option value="C">Rank C</option><option value="B" selected>Rank B</option><option value="A">Rank A</option></select></div><select id="f-trc"><option value="Equilibrado">Equilibrado</option><option value="Veloz">Veloz (+3 ATQ)</option><option value="Pesado">Pesado (+25% Dano)</option><option value="Perfurante">Perfurante (Ign 50% RES)</option><option value="Controle">Controle (-3 DEF)</option><option value="Area">Área (3 alvos)</option><option value="Letal">Letal (Crit +8)</option></select><textarea id="f-dsc" rows="2" placeholder="Efeito tático..."></textarea><div id="f-prv" style="display:none;background:#090c10;border:1px solid var(--acc);padding:7px;border-radius:6px;margin-bottom:6px;font-size:12px"></div><div class="br"><button class="btn bw2" onclick="evalFrg()">⚖ Avaliar</button><button class="btn bs" onclick="saveFrg()">💾 Salvar</button></div></div></div>
+  <div id="p-fch" class="pane"><div class="crd"><div class="ct"><span>⚡ Atributos (Teto <span id="l-cap">26</span> | PA: <span id="l-pa">6</span>)</span><span style="font-size:11px;color:var(--mut)" id="l-xp">400/1200</span></div><div class="sg" id="st-grd"></div><div class="br" style="margin-top:7px"><button class="btn" onclick="addXp(300)">+300 XP</button><button class="btn" onclick="addXp(800)">+800 XP (Subir Nv)</button></div></div><div class="crd"><div class="ct"><span>⚔️ Status Derivados</span></div><div class="dg" id="dv-grd"></div></div><div class="crd"><div class="ct"><span>🔥 Poderes & Arma Evolutiva</span></div><div id="pw-sum" style="font-size:12px"></div></div><div class="crd"><div class="ct"><span>🌀 Grimório (<span id="l-slt">6/7</span>)</span><span style="font-size:11px;color:var(--lgt)">Máx <span id="l-rnk">B</span></span></div><div id="gr-lst"></div></div></div>
+  <div id="p-frj" class="pane">
+    <div class="crd" style="border-color:var(--yin)">
+      <div class="ct" style="color:var(--yin)"><span>✨ Forja Automática via IA</span><span style="font-size:11px;color:var(--mut)">Equilibra & Gera JSON</span></div>
+      <select id="ai-f-tipo">
+        <option value="jutsu">🌀 Novo Jutsu / Evolução (Grimório)</option>
+        <option value="arma">🗡️ Novo Poder para Arma (Acumula sem perder antigos)</option>
+        <option value="nevoa">🔮 Novo Estágio da Névoa Assassina (Acumulativo)</option>
+      </select>
+      <textarea id="ai-f-prm" rows="3" placeholder="Descreva sua ideia (ex: Chuva de Relâmpago Rank B com 4 filamentos que se dividem ou fundem...)"></textarea>
+      <button class="btn bk" id="b-aif" onclick="aiForge()">⚡ Gerar & Aplicar com IA</button>
+    </div>
+    <div class="crd"><div class="ct"><span>📥 Importar Bloco JSON (Manual)</span></div><textarea id="imp-txt" rows="3" placeholder="Cole o JSON gerado aqui (Jutsu, Arma ou Névoa)..."></textarea><button class="btn bs" onclick="impBlk()">📥 Aplicar na Ficha / Grimório</button></div>
+    <div class="crd"><div class="ct"><span>🛠 Forja Rápida (Jutsu)</span></div><input id="f-nm" placeholder="Nome do Jutsu"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px"><select id="f-vec"><option>Ninjutsu</option><option>Kenjutsu</option><option>Taijutsu</option><option>Hibrido</option><option>Genjutsu</option><option>Suporte</option></select><select id="f-elm"><option value="Raio">⚡ Raio</option><option value="Agua">💧 Água</option><option value="Tempestade">🧬 Tempestade</option></select><select id="f-rnk"><option value="D">Rank D</option><option value="C">Rank C</option><option value="B" selected>Rank B</option><option value="A">Rank A</option></select></div><select id="f-trc"><option value="Equilibrado">Equilibrado</option><option value="Veloz">Veloz (+3 ATQ)</option><option value="Pesado">Pesado (+25% Dano)</option><option value="Perfurante">Perfurante (Ign 50% RES)</option><option value="Controle">Controle (-3 DEF)</option><option value="Area">Área (3 alvos)</option><option value="Letal">Letal (Crit +8)</option></select><textarea id="f-dsc" rows="2" placeholder="Efeito tático..."></textarea><div id="f-prv" style="display:none;background:#090c10;border:1px solid var(--acc);padding:7px;border-radius:6px;margin-bottom:6px;font-size:12px"></div><div class="br"><button class="btn bw2" onclick="evalFrg()">⚖ Avaliar</button><button class="btn bs" onclick="saveFrg()">💾 Salvar</button></div></div>
+  </div>
   <div id="p-db" class="pane"><div class="crd"><div class="ct"><span>🤝 Aliados (Rin no Sho)</span></div><div id="al-lst" style="font-size:12px"></div></div><div class="crd"><div class="ct"><span>🥷 Invocar Teste</span></div><div class="br"><button class="btn" onclick="spnEn('Genin Taki',9,420,340,30,31,29,15)">🥷 Genin</button><button class="btn" onclick="spnEn('Chūnin',15,850,720,46,46,44,24)">⚔️ Chūnin</button><button class="btn bd" onclick="spnEn('Chefe S',42,3600,3200,96,94,92,68)">🐍 Chefe S</button></div></div></div>
   <div id="p-cfg" class="pane"><div class="crd"><div class="ct"><span>🔑 API Key (Gemini / Groq / OpenRouter)</span></div><input type="password" id="api-in" placeholder="AIzaSy... / gsk_... / sk-or-..."><div class="br"><button class="btn bp" onclick="svKey()">Salvar</button><button class="btn" onclick="tstKey()">Testar</button></div></div><div class="crd"><div class="ct"><span>💾 Save</span></div><div class="br"><button class="btn" onclick="exp6B()">📋 Copiar 6B</button><button class="btn bd" onclick="rstAll()">⚠ Resetar</button></div></div></div>
 </div><div class="tst" id="tst"></div>
 <script>
 const DEF_ST={
   f:{nome:"Zero",arco:2,arcoCap:18,clk:2,clkM:6,lv:12,xp:400,pa:6,ryo:6150,st:{FOR:21,AGI:26,INT:17,CTR:26,PER:17},hp:868,cp:1032,est:{Kenjutsu:2,Taijutsu:1},tal:Array.of("Reflexo"),
-    nev:{nome:"Névoa Assassina",stg:1,on:false,desc:"Ignora Visão Obstruída; Bruma (-2 ATQ/DEF/MEN); -3 sensorial; +2 ATQ_NIN (Água) e +2 CONC (Genjutsu)."},
-    arm:{nome:"Gume da Bruma",rk:"C",mod:"Ressonância Fio (10CP, -5CP/t): -15%CP Kenjutsu; Raio: +1ATQ & Ign50%RES; Água: +12 Dano & -2 DEF_GRD."},
+    nev:{nome:"Névoa Assassina",stg:0,on:false,estagios:[
+      {id:"nev_1",stg:1,nome:"Estágio 1 — Bruma Oculta",cpT:15,atqNin:2,conc:2,atqFis:0,vel:0,defEsq:0,ef:"Ignora Visão Obstruída; Bruma (-2 ATQ/DEF/MEN inimigo); -3 sensorial; +2 ATQ_NIN (Água) e +2 CONC (Genjutsu)."}
+    ]},
+    arm:{nome:"Gume da Bruma",rk:"C",poderes:[
+      {id:"ressonancia_fio",nome:"Ressonância de Fio Elemental",atqFis:0,wDmg:0,ef:"10 CP sintonizar (-5 CP/t): -15% CP em Kenjutsus do elemento; Raio: +1 ATQ_FIS & Ignora 50% RES; Água: +12 Dano & -2 DEF_GRD 1t."}
+    ]},
     mod:{flu:false,fio:"OFF",pos:"NORM"}},
   gr:Array.of(
     {id:"substituicao_nevoa",slot:1,nome:"Substituição da Névoa",vec:"Suporte",el:"Agua",rk:"D",nv:2,trc:"Equilibrado",cpC:18,ef:"Reação +6 DEF_ESQ; se esquivar, +2 CONC no próximo Genjutsu."},
@@ -74,20 +93,48 @@ const ALLIES=Array.of(
   {n:"Kakashi Hatake",r:"Jounin Nv.36",s:"HP 2500 | CP 2000 | VEL 82 | ATQ 84 | Sharingan 3T, Raikiri (510)"}
 );
 let ST=JSON.parse(localStorage.getItem("apx_v4")||"null")||JSON.parse(JSON.stringify(DEF_ST));
-const sv=()=>{try{localStorage.setItem("apx_v4",JSON.stringify(ST))}catch(e){}rnd()};
-const tst=m=>{const e=document.getElementById("tst");e.textContent=m;e.style.display="block";setTimeout(()=>e.style.display="none",2400)};
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-function calcD(f){
-  const cap=14+f.lv;for(const k of Array.of("FOR","AGI","INT","CTR","PER"))if(f.st.k>cap){f.pa+=f.st.k-cap;f.st.k=cap}
-  const t=f.lv<=4?{d:1,r:0}:f.lv<=11?{d:2,r:5}:f.lv<=22?{d:4,r:12}:f.lv<=37?{d:6,r:22}:f.lv<=47?{d:8,r:40}:{d:11,r:80};
-  const mHP=100+22*f.lv+2*f.lv*f.st.FOR+(f.tal.includes("Corpo_Temperado")?120:0),mCP=96+26*f.lv+2*f.lv*f.st.CTR+(f.tal.includes("Meridianos")?120:0);
-  const vel=f.st.AGI+Math.floor(f.st.FOR/2)+(f.tal.includes("Reflexo")?5:0)+(f.mod.flu?2:0),mov=vel<22?1:vel<=44?2:vel<=74?3:4,ks=(f.est.Kenjutsu||1)-1;
-  const aF=f.st.AGI+Math.floor(f.st.FOR/2)+ks+(f.mod.flu?3:0)+(f.mod.fio==="Raio"?1:0)+(f.mod.pos==="FLANCO"?2:f.mod.pos==="EMBOSCADA"?5:0);
-  const aN=f.st.CTR+Math.floor(f.st.INT/2)+(f.nev.on?2:0),cnc=f.st.INT+Math.floor(f.st.PER/2)+(f.nev.on?2:0);
-  const dE=f.st.AGI+Math.floor(f.st.PER/2)+t.d+(f.mod.flu?1:0)+(f.mod.pos==="COBERTURA"?3:0),dG=Math.max(f.st.AGI,f.st.FOR)+Math.floor(f.st.PER/2)+t.d+1+ks,dM=f.st.PER+Math.floor(f.st.INT/2)+t.d;
-  const res=t.r+Math.floor(f.st.FOR/2)+Math.floor(f.st.CTR/4),wD=Math.floor((40+4*f.st.AGI)*(1+.15*ks))+(f.mod.flu?14:0)+(f.mod.fio==="Agua"?12:0);
-  return{cap,mHP,mCP,vel,mov,aF,aN,cnc,dE,dG,dM,res,wD,sMax:3+Math.floor(f.lv/3),mRk:f.lv<=4?"D":f.lv<=11?"C":f.lv<=21?"B":f.lv<=34?"A":"S"};
+
+function migrateST(){
+  const f=ST.f;
+  if(!Array.isArray(f.nev.estagios)){
+    f.nev.estagios=[{id:"nev_1",stg:1,nome:"Estágio 1 — Bruma Oculta",cpT:15,atqNin:2,conc:2,atqFis:0,vel:0,defEsq:0,ef:f.nev.desc||DEF_ST.f.nev.estagios[0].ef}];
+    f.nev.stg=f.nev.on?1:0;
+  }
+  if(!Array.isArray(f.arm.poderes)){
+    f.arm.poderes=[{id:"ressonancia_fio",nome:"Ressonância de Fio Elemental",atqFis:0,wDmg:0,ef:f.arm.mod||DEF_ST.f.arm.poderes[0].ef}];
+  }
 }
+migrateST();
+
+const sv=()=>{try{localStorage.setItem("apx_v4",JSON.stringify(ST))}catch(e){}rnd()};
+const tst=m=>{const e=document.getElementById("tst");e.textContent=m;e.style.display="block";setTimeout(()=>e.style.display="none",2600)};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function getNevActive(f){
+  const list=f.nev.estagios||[],s=f.nev.stg||0;
+  if(s<=0||!list.length)return{on:false,stg:0,max:list.length,isFinal:false,cpT:0,atqNin:0,conc:0,atqFis:0,vel:0,defEsq:0,ativos:[]};
+  const isFinal=(list.length>1 && s===list.length);
+  const ativos=isFinal?list:[list[s-1]];
+  return ativos.reduce((acc,cur)=>({
+    on:true,stg:s,max:list.length,isFinal,ativos,
+    cpT:acc.cpT+(cur.cpT||0),atqNin:acc.atqNin+(cur.atqNin||0),conc:acc.conc+(cur.conc||0),
+    atqFis:acc.atqFis+(cur.atqFis||0),vel:acc.vel+(cur.vel||0),defEsq:acc.defEsq+(cur.defEsq||0)
+  }),{cpT:0,atqNin:0,conc:0,atqFis:0,vel:0,defEsq:0});
+}
+function calcD(f){
+  const cap=14+f.lv;for(const k of Array.of("FOR","AGI","INT","CTR","PER"))if(f.st[k]>cap){f.pa+=f.st[k]-cap;f.st[k]=cap}
+  const t=f.lv<=4?{d:1,r:0}:f.lv<=11?{d:2,r:5}:f.lv<=22?{d:4,r:12}:f.lv<=37?{d:6,r:22}:f.lv<=47?{d:8,r:40}:{d:11,r:80};
+  const nv=getNevActive(f);
+  const armP=(f.arm.poderes||[]).reduce((a,p)=>({atqFis:a.atqFis+(p.atqFis||0),wDmg:a.wDmg+(p.wDmg||0)}),{atqFis:0,wDmg:0});
+  const mHP=100+22*f.lv+2*f.lv*f.st.FOR+(f.tal.includes("Corpo_Temperado")?120:0),mCP=96+26*f.lv+2*f.lv*f.st.CTR+(f.tal.includes("Meridianos")?120:0);
+  const vel=f.st.AGI+Math.floor(f.st.FOR/2)+(f.tal.includes("Reflexo")?5:0)+(f.mod.flu?2:0)+nv.vel,mov=vel<22?1:vel<=44?2:vel<=74?3:4,ks=(f.est.Kenjutsu||1)-1;
+  const aF=f.st.AGI+Math.floor(f.st.FOR/2)+ks+(f.mod.flu?3:0)+(f.mod.fio==="Raio"?1:0)+(f.mod.pos==="FLANCO"?2:f.mod.pos==="EMBOSCADA"?5:0)+nv.atqFis+armP.atqFis;
+  const aN=f.st.CTR+Math.floor(f.st.INT/2)+nv.atqNin,cnc=f.st.INT+Math.floor(f.st.PER/2)+nv.conc;
+  const dE=f.st.AGI+Math.floor(f.st.PER/2)+t.d+(f.mod.flu?1:0)+(f.mod.pos==="COBERTURA"?3:0)+nv.defEsq,dG=Math.max(f.st.AGI,f.st.FOR)+Math.floor(f.st.PER/2)+t.d+1+ks,dM=f.st.PER+Math.floor(f.st.INT/2)+t.d;
+  const res=t.r+Math.floor(f.st.FOR/2)+Math.floor(f.st.CTR/4),wD=Math.floor((40+4*f.st.AGI)*(1+.15*ks))+(f.mod.flu?14:0)+(f.mod.fio==="Agua"?12:0)+armP.wDmg;
+  return{cap,mHP,mCP,vel,mov,aF,aN,cnc,dE,dG,dM,res,wD,nv,sMax:3+Math.floor(f.lv/3),mRk:f.lv<=4?"D":f.lv<=11?"C":f.lv<=21?"B":f.lv<=34?"A":"S"};
+}
+
 function calcJ(j,f,d){
   let cp=j.cpC||({E:10,D:20,C:45,B:100,A:220,S:450}[j.rk]||45);if(f.mod.fio!=="OFF"&&f.mod.fio===j.el&&j.vec==="Kenjutsu")cp=Math.max(3,cp-Math.max(3,Math.round(cp*.15)));
   const st=(j.vec==="Kenjutsu"?f.est.Kenjutsu-1:0)+((j.nv||1)-1),sc=(j.vec==="Kenjutsu"||j.vec==="Taijutsu")?f.st.AGI:f.st.CTR;
@@ -96,67 +143,146 @@ function calcJ(j,f,d){
   let dmg=(j.vec==="Suporte"||j.vec==="Genjutsu")?0:Math.floor((bd+(j.vec==="Kenjutsu"?10:0))*(1+.15*st)*tm)+(f.mod.flu&&j.vec==="Kenjutsu"?14:0);
   if(j.id==="vortice_lamina")dmg=Math.floor((35+3*f.st.CTR)*(1+.15*st));return{cp,atq,dmg};
 }
+
 function rnd(){
   const f=ST.f,d=calcD(f);f.hp=Math.min(f.hp,d.mHP);f.cp=Math.min(f.cp,d.mCP);
   document.getElementById("h-nm").textContent=`${f.nome} (Nv.${f.lv}/${f.arcoCap})`;document.getElementById("h-pa").textContent=`PA: ${f.pa}`;
   document.getElementById("h-arc").textContent=`Arco ${f.arco} ⏳ ${f.clk}/${f.clkM}`;document.getElementById("h-ryo").textContent=`${f.ryo.toLocaleString("pt-BR")} Ryō`;
   document.getElementById("h-hp").textContent=`${f.hp}/${d.mHP}`;document.getElementById("b-hp").style.width=`${Math.max(0,f.hp/d.mHP*100)}%`;
   document.getElementById("h-cp").textContent=`${f.cp}/${d.mCP}`;document.getElementById("b-cp").style.width=`${Math.max(0,f.cp/d.mCP*100)}%`;
-  const bn=document.getElementById("t-nev");bn.className="tb"+(f.nev.on?" on-y":"");bn.textContent=`🔮 Névoa: ${f.nev.on?"ON":"OFF"}`;
+
+  const bn=document.getElementById("t-nev");
+  if(!d.nv.on){bn.className="tb";bn.textContent="🔮 Névoa: OFF";}
+  else if(d.nv.isFinal){bn.className="tb on-k";bn.textContent=`🔮 Névoa: FINAL (-${d.nv.cpT}CP)`;}
+  else{bn.className="tb on-y";bn.textContent=`🔮 Névoa: Est.${d.nv.stg} (-${d.nv.cpT}CP)`;}
   const bf=document.getElementById("t-flu");bf.className="tb"+(f.mod.flu?" on-w":"");bf.textContent=`💧 Fluxo: ${f.mod.flu?"ON":"OFF"}`;
   const bi=document.getElementById("t-fio");bi.className="tb"+(f.mod.fio==="Agua"?" on-w":f.mod.fio==="Raio"?" on-l":"");bi.textContent=`🗡 Fio: ${f.mod.fio}`;
   const bp=document.getElementById("t-pos");bp.className="tb"+(f.mod.pos!=="NORM"?" on-p":"");bp.textContent=`🎯 Pos: ${f.mod.pos}`;
   document.getElementById("l-cap").textContent=d.cap;document.getElementById("l-pa").textContent=f.pa;document.getElementById("l-xp").textContent=`${f.xp}/${f.lv*100}`;
   document.getElementById("st-grd").innerHTML=Array.of("FOR","AGI","INT","CTR","PER").map(k=>{const v=f.st[k],c=v>=d.cap;return`<div class="sb"><div style="font-size:11px;color:var(--mut)">${k}</div><div class="sv ${c?"scap":""}">${v}${c?"❗":""}</div><button class="btn" style="padding:2px;margin-top:3px;font-size:11px" onclick="spPA('${k}')" ${f.pa<=0||c?"disabled":""}>+1</button></div>`}).join("");
   document.getElementById("dv-grd").innerHTML=`<div class="di">⚡ VEL: <b>${d.vel} (${d.mov}M)</b></div><div class="di">🛡️ RES: <b>${d.res}</b></div><div class="di">⚔️ ATQ Fís/Nin: <b>${d.aF}/${d.aN}</b></div><div class="di">🔮 CONC: <b>${d.cnc}</b></div><div class="di">💨 DEF E/G/M: <b>${d.dE}/${d.dG}/${d.dM}</b></div><div class="di">🗡️ Bruma: <b>ATQ ${d.aF} | Dano ${d.wD}</b></div>`;
-  document.getElementById("pw-sum").innerHTML=`<p>✨ <b>${f.nev.nome}:</b> ${f.nev.desc}</p><p style="margin-top:4px">🗡️ <b>${f.arm.nome} [${f.arm.rk}]:</b> ${f.arm.mod}</p>`;
+
+  const nevHtml=(f.nev.estagios||[]).map(e=>{
+    const act=d.nv.on&&(d.nv.isFinal||d.nv.stg===e.stg);
+    return`<div class="pw-item" style="${act?"border-color:var(--yin)":""}"><b style="color:var(--yin)">[Estágio ${e.stg}] ${esc(e.nome)} (-${e.cpT} CP/t) ${act?"[ATIVO]":""}</b><div style="color:var(--mut);margin-top:2px">${esc(e.ef)}</div></div>`;
+  }).join("");
+  const armHtml=(f.arm.poderes||[]).map(p=>`<div class="pw-item"><b style="color:var(--lgt)">✦ ${esc(p.nome)}</b><div style="color:var(--mut);margin-top:2px">${esc(p.ef)}</div></div>`).join("");
+  document.getElementById("pw-sum").innerHTML=`<div style="margin-bottom:8px"><b>✨ ${esc(f.nev.nome)}</b> <span style="color:var(--mut)">(${f.nev.estagios.length} forma(s) | Forma Final soma todos)</span>${nevHtml}</div><div><b>🗡️ ${esc(f.arm.nome)} [Rank ${f.arm.rk}]</b> <span style="color:var(--mut)">(${f.arm.poderes.length} poder(es) acumulados)</span>${armHtml}</div>`;
+
   document.getElementById("l-slt").textContent=`${ST.gr.length}/${d.sMax}`;document.getElementById("l-rnk").textContent=d.mRk;
   document.getElementById("gr-lst").innerHTML=Array.from(ST.gr).sort((a,b)=>a.slot-b.slot).map(j=>{const c=calcJ(j,f,d);return`<div class="jc el-${j.el}"><div class="jh"><span>[${j.slot}] ${j.nome} (${j.rk})</span><span style="color:var(--wtr)">${c.cp} CP</span></div><div class="jm">${j.vec} • ${j.el} • Nv.${j.nv} • ${j.vec==="Genjutsu"?"CONC":"ATQ"} ${c.atq} | ${j.id==="vortice_lamina"?"Escudo "+c.dmg:c.dmg>0?"Dano "+c.dmg:"Tático"}</div><div class="jd">${j.ef}</div></div>`}).join("");
   document.getElementById("al-lst").innerHTML=ALLIES.map(a=>`<div style="padding:5px 0;border-bottom:1px solid var(--bd)"><b>${a.n}</b> (${a.r})<br><span style="color:var(--mut)">${a.s}</span></div>`).join("");
   const cc=document.getElementById("cmp-crd");if(ST.en.length){cc.style.display="block";document.getElementById("en-lst").innerHTML=ST.en.map(e=>`<div class="ep"><b>${e.n} (Nv.${e.lv})</b> — ❤️ ${e.hp}/${e.mHp} | 🔵 ${e.cp} | VEL ${e.vel} | ATQ ${e.atq} | DEF ${e.def} | RES ${e.res}</div>`).join("")}else cc.style.display="none";
   const lb=document.getElementById("c-log");lb.innerHTML=ST.lg.map(l=>l.t==="p"?`<div class="le"><div class="lp">▶ Zero: ${esc(l.tx)}</div></div>`:`<div class="le lg">${l.tx.split("\n").filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join("")}${l.ta?`<div class="lt">${esc(l.ta)}</div>`:""}</div>`).join("");lb.scrollTop=lb.scrollHeight;
 }
+
 function tab(id,b){document.querySelectorAll(".pane").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".nt").forEach(x=>x.classList.remove("act"));document.getElementById(id).classList.add("act");b.classList.add("act")}
-function tog(m){if(m==="nevoa")ST.f.nev.on=!ST.f.nev.on;if(m==="fluxo"){if(!ST.f.mod.flu&&ST.f.cp>=18){ST.f.cp-=18;ST.f.mod.flu=true}else ST.f.mod.flu=false}sv()}
+function cycNev(){
+  const max=(ST.f.nev.estagios||[]).length;
+  ST.f.nev.stg=((ST.f.nev.stg||0)+1)%(max+1);
+  ST.f.nev.on=ST.f.nev.stg>0;
+  sv();
+}
+function tog(m){if(m==="fluxo"){if(!ST.f.mod.flu&&ST.f.cp>=18){ST.f.cp-=18;ST.f.mod.flu=true}else ST.f.mod.flu=false}sv()}
 function cycFio(){const o=Array.of("OFF","Raio","Agua"),nx=o.at((o.indexOf(ST.f.mod.fio)+1)%3);if(nx!=="OFF"){if(ST.f.cp<10)return tst("Sem CP!");ST.f.cp-=10}ST.f.mod.fio=nx;sv()}
 function cycPos(){const o=Array.of("NORM","FLANCO","EMBOSCADA","COBERTURA");ST.f.mod.pos=o.at((o.indexOf(ST.f.mod.pos)+1)%4);sv()}
-function tickTurn(){const f=ST.f,u=(f.nev.on?15:0)+(f.mod.flu?6:0)+(f.mod.fio!=="OFF"?5:0);f.cp=Math.max(0,f.cp-u);tst(`-${u} CP`);sv()}
+function tickTurn(){const f=ST.f,d=calcD(f),u=(d.nv.on?d.nv.cpT:0)+(f.mod.flu?6:0)+(f.mod.fio!=="OFF"?5:0);f.cp=Math.max(0,f.cp-u);tst(`-${u} CP`);sv()}
 function spPA(k){const f=ST.f,d=calcD(f);if(f.pa>0&&f.st[k]<d.cap){f.st[k]++;f.pa--;sv()}}
 function addXp(x){const f=ST.f;f.xp+=x;while(f.xp>=f.lv*100&&f.lv<f.arcoCap){f.xp-=f.lv*100;f.lv++;f.pa+=4;const d=calcD(f);f.hp=d.mHP;f.cp=d.mCP;tst(`LEVEL UP Nv.${f.lv}!`)}sv()}
-function restAll(){const d=calcD(ST.f);ST.f.hp=d.mHP;ST.f.cp=d.mCP;ST.f.nev.on=false;ST.f.mod.flu=false;ST.f.mod.fio="OFF";tst("100% Restaurado!");sv()}
+function restAll(){const d=calcD(ST.f);ST.f.hp=d.mHP;ST.f.cp=d.mCP;ST.f.nev.on=false;ST.f.nev.stg=0;ST.f.mod.flu=false;ST.f.mod.fio="OFF";tst("100% Restaurado!");sv()}
 function advArc(){ST.f.arco++;ST.f.arcoCap={2:18,3:25,4:32,5:40,6:52,7:64,8:80}[ST.f.arco]||80;ST.f.clk=0;for(const k of Array.of("FOR","AGI","INT","CTR","PER"))ST.f.st[k]++;addXp(ST.f.lv*150);tst(`Arco ${ST.f.arco}!`)}
 function spnEn(n,lv,hp,cp,vel,atq,def,res){ST.en.push({n,lv,hp,mHp:hp,cp,vel,atq,def,res});sv()}
 function clrEn(){ST.en=Array.of();sv()}
 function clrLog(){ST.lg=Array.of();sv()}
-function impBlk(){try{const o=JSON.parse(document.getElementById("imp-txt").value.trim()),d=calcD(ST.f);if(!o.id)o.id=o.nome.toLowerCase().replace(/\W+/g,"_");const i=ST.gr.findIndex(x=>x.id===o.id||(o.slot&&x.slot===o.slot));if(i>=0){o.slot=ST.gr.at(i).slot;ST.gr.splice(i,1,{...ST.gr.at(i),...o});tst(`Slot ${o.slot} atualizado!`)}else{if(ST.gr.length>=d.sMax)return tst("Sem slots!");o.slot=o.slot||ST.gr.length+1;ST.gr.push(o);tst(`Salvo no Slot ${o.slot}!`)}document.getElementById("imp-txt").value="";sv()}catch(e){alert("JSON inválido")}}
-function evalFrg(){const nm=document.getElementById("f-nm").value.trim()||"Técnica",vec=document.getElementById("f-vec").value,el=document.getElementById("f-elm").value,rk=document.getElementById("f-rnk").value,trc=document.getElementById("f-trc").value,ef=document.getElementById("f-dsc").value.trim()||`${vec} de ${el}`,d=calcD(ST.f);const dr={id:nm.toLowerCase().replace(/\W+/g,"_"),nome:nm,vec,el,rk,nv:1,trc,ef};const c=calcJ(dr,ST.f,d);ST.drf=dr;const p=document.getElementById("f-prv");p.style.display="block";p.innerHTML=`<b>${nm} [${rk}]</b>: ${c.cp} CP | ATQ ${c.atq} | Dano ${c.dmg}`}
-function saveFrg(){if(!ST.drf)evalFrg();document.getElementById("imp-txt").value=JSON.stringify(ST.drf);impBlk();ST.drf=null}
-async function callGem(k,p){
-  k=k.trim();
-  const isG=k.startsWith("gsk_");
-  const isO=k.startsWith("sk-or-");
-  const u=isG?"https://groq.com":isO?"https://openrouter.ai":"https://googleapis.com"+encodeURIComponent(k);
-  const h={"Content-Type":"application/json"};
-  if(isG||isO)h.Authorization="Bearer "+k;
-  const b=(isG||isO)?{model:isG?"llama-3.3-70b-versatile":"meta-llama/llama-3.3-70b-instruct:free",messages:Array.of({role:"user",content:p})}:{contents:Array.of({parts:Array.of({text:p})})};
-  const r=await fetch(u,{method:"POST",headers:h,body:JSON.stringify(b)});
-  if(!r.ok)throw new Error("HTTP "+r.status);
-  const j=await r.json();
-  return (isG||isO)?j.choices.at(0).message.content:j.candidates.at(0).content.parts.at(0).text;
+
+function applyJsonObj(o){
+  const d=calcD(ST.f);
+  if(o.tipo==="arma"){
+    if(!o.id)o.id=o.nome.toLowerCase().replace(/\W+/g,"_");
+    const list=ST.f.arm.poderes,idx=list.findIndex(p=>p.id===o.id);
+    const item={id:o.id,nome:o.nome,atqFis:Number(o.atqFis)||0,wDmg:Number(o.wDmg)||0,ef:o.ef};
+    if(idx>=0){list[idx]=item;tst(`Poder da arma atualizado!`)}
+    else{list.push(item);tst(`Novo poder somado à ${ST.f.arm.nome}!`)}
+    if(o.rk)ST.f.arm.rk=o.rk;
+    return sv();
+  }
+  if(o.tipo==="nevoa"){
+    const list=ST.f.nev.estagios;
+    const stgNum=Number(o.stg)||list.length+1;
+    if(!o.id)o.id="nev_"+stgNum;
+    const idx=list.findIndex(e=>e.id===o.id||e.stg===stgNum);
+    const item={id:o.id,stg:stgNum,nome:o.nome||`Estágio ${stgNum}`,cpT:Number(o.cpT)||15,atqNin:Number(o.atqNin)||0,conc:Number(o.conc)||0,atqFis:Number(o.atqFis)||0,vel:Number(o.vel)||0,defEsq:Number(o.defEsq)||0,ef:o.ef};
+    if(idx>=0){list[idx]=item;tst(`Névoa Estágio ${stgNum} atualizado!`)}
+    else{list.push(item);list.sort((a,b)=>a.stg-b.stg);tst(`Névoa Estágio ${stgNum} desbloqueado!`)}
+    return sv();
+  }
+  if(!o.id)o.id=o.nome.toLowerCase().replace(/\W+/g,"_");
+  const i=ST.gr.findIndex(x=>x.id===o.id||(o.slot&&x.slot===o.slot));
+  if(i>=0){o.slot=ST.gr.at(i).slot;ST.gr.splice(i,1,{...ST.gr.at(i),...o});tst(`Slot ${o.slot} atualizado!`)}
+  else{if(ST.gr.length>=d.sMax)return tst("Sem slots livres!");o.slot=o.slot||ST.gr.length+1;ST.gr.push(o);tst(`Salvo no Slot ${o.slot}!`)}
+  sv();
 }
-async function callGem(k,p){
+
+function impBlk(){
+  try{
+    const raw=document.getElementById("imp-txt").value.trim();
+    const clean=raw.replace(/```json|```/gi,"").trim();
+    const o=JSON.parse(clean);
+    applyJsonObj(o);
+    document.getElementById("imp-txt").value="";
+  }catch(e){alert("JSON inválido: "+e.message)}
+}
+
+function evalFrg(){const nm=document.getElementById("f-nm").value.trim()||"Técnica",vec=document.getElementById("f-vec").value,el=document.getElementById("f-elm").value,rk=document.getElementById("f-rnk").value,trc=document.getElementById("f-trc").value,ef=document.getElementById("f-dsc").value.trim()||`${vec} de ${el}`,d=calcD(ST.f);const dr={id:nm.toLowerCase().replace(/\W+/g,"_"),nome:nm,vec,el,rk,nv:1,trc,ef};const c=calcJ(dr,ST.f,d);ST.drf=dr;const p=document.getElementById("f-prv");p.style.display="block";p.innerHTML=`<b>${nm} [${rk}]</b>: ${c.cp} CP | ATQ ${c.atq} | Dano ${c.dmg}`}
+function saveFrg(){if(!ST.drf)evalFrg();applyJsonObj(ST.drf);ST.drf=null}
+
+async function callGen(k,p){
   k=k.replace(/\s+/g,"");
   const isG=k.startsWith("gsk_"),isO=k.startsWith("sk-or-");
   if(!isG&&!isO&&!k.startsWith("AIza"))throw new Error("Prefixo não reconhecido: "+k.slice(0,6));
-  const u=isG?("https://"+"://groq.com"):isO?("https://"+"openrouter.ai/api/v1/chat/completions"):("https://"+"://googleapis.com"+encodeURIComponent(k));
+  const u=isG?"https://groq.com":isO?"https://openrouter.ai":`https://googleapis.com{encodeURIComponent(k)}`;
   const h={"Content-Type":"application/json"};
   if(isG||isO)h.Authorization="Bearer "+k;
-  const b=(isG||isO)?{model:isG?"llama-3.3-70b-versatile":"openrouter/free",messages:Array.of({role:"user",content:p})}:{contents:Array.of({parts:Array.of({text:p})})};
+  const b=(isG||isO)?{model:isG?"llama-3.3-70b-versatile":"meta-llama/llama-3.3-70b-instruct:free",messages:Array.of({role:"user",content:p})}:{contents:Array.of({parts:Array.of({text:p})})};
   const r=await fetch(u,{method:"POST",headers:h,body:JSON.stringify(b)});
   if(!r.ok){const e=await r.text();throw new Error("HTTP "+r.status+": "+e.slice(0,100))}
   const j=await r.json();
   return (isG||isO)?j.choices.at(0).message.content:j.candidates.at(0).content.parts.at(0).text;
 }
+
+async function aiForge(){
+  const k=localStorage.getItem("apx_key");
+  if(!k)return tst("Salve sua API Key na aba ⚙ API/Save!");
+  const ideia=document.getElementById("ai-f-prm").value.trim();
+  if(!ideia)return tst("Descreva a ideia primeiro!");
+  const tipo=document.getElementById("ai-f-tipo").value;
+  const btn=document.getElementById("b-aif"),d=calcD(ST.f);
+  btn.disabled=true;btn.textContent="⚡ Forjando e equilibrando...";
+  try{
+    let schema="";
+    if(tipo==="jutsu"){
+      const nextSlot=ST.gr.length+1;
+      schema=`{"tipo":"jutsu","id":"nome_sem_espaco","slot":${nextSlot},"nome":"Nome","vec":"Ninjutsu|Kenjutsu|Taijutsu|Hibrido|Genjutsu|Suporte","el":"Agua|Raio|Tempestade","rk":"D|C|B","nv":1,"trc":"Equilibrado|Veloz|Pesado|Perfurante|Controle|Area|Letal","ef":"Descrição tática curta e equilibrada para Nv.${ST.f.lv} (Máx Rank ${d.mRk})."}`;
+    }else if(tipo==="arma"){
+      schema=`{"tipo":"arma","id":"id_poder_unico","nome":"Nome do Novo Poder","atqFis":0,"wDmg":0,"ef":"Descrição tática equilibrada que soma à espada sem substituir poderes antigos (${ST.f.arm.poderes.map(p=>p.nome).join(", ")})."}`;
+    }else{
+      const nextStg=ST.f.nev.estagios.length+1;
+      schema=`{"tipo":"nevoa","id":"nev_${nextStg}","stg":${nextStg},"nome":"Estágio ${nextStg} — Título","cpT":${15+nextStg*10},"atqNin":0,"conc":0,"atqFis":0,"vel":0,"defEsq":0,"ef":"Descrição dos poderes deste estágio (na Forma Final todos os estágios somam juntos)."}`;
+    }
+    const prompt=`Você é o motor matemático TTRPG APEX Naruto v1.6.0. Crie e equilibre o item pedido pelo jogador para o personagem Zero (Nv.${ST.f.lv}, FOR:${ST.f.st.FOR}, AGI:${ST.f.st.AGI}, CTR:${ST.f.st.CTR}, Máx Rank:${d.mRk}).\nPedido: "${ideia}"\nResponda EXCLUSIVAMENTE com um objeto JSON válido (sem markdown, sem explicações antes ou depois) seguindo exatamente este formato:\n${schema}`;
+    const raw=await callGen(k,prompt);
+    const match=raw.match(/\{[\s\S]*\}/);
+    if(!match)throw new Error("A IA não retornou um JSON válido.");
+    const obj=JSON.parse(match[0]);
+    applyJsonObj(obj);
+    document.getElementById("ai-f-prm").value="";
+  }catch(e){
+    alert("Erro na Forja IA: "+e.message);
+  }finally{
+    btn.disabled=false;btn.textContent="⚡ Gerar & Aplicar com IA";
+  }
+}
+
 async function sendAct(){
   const inp=document.getElementById("p-inp"),act=inp.value.trim();if(!act)return;
   inp.value="";ST.lg.push({t:"p",tx:act});sv();
@@ -164,16 +290,15 @@ async function sendAct(){
   if(!k){ST.lg.push({t:"gm",tx:`Você executa "${act}" com o Time 7.\n\n(Salve sua API Key na aba ⚙ API/Save!)`,ta:`Offline | VEL ${d.vel} | ATQ ${d.aF}`});return sv()}
   const b=document.getElementById("b-snd");b.disabled=true;b.textContent="...";
   try{
-    const pr=`Mestre Naruto v1.5.1 PT-BR (2 parágrafos curtos + linha "TÁTICA: ..."). PC Zero Nv.${ST.f.lv} HP:${ST.f.hp}/${d.mHP} CP:${ST.f.cp}/${d.mCP} VEL:${d.vel} ATQ:${d.aF}/${d.aN}. Inimigos:${JSON.stringify(ST.en)}. Ação: "${act}"`;
-    const rep=await callGem(k,pr);ST.lg.push({t:"gm",tx:rep,ta:"Turno processado via IA"});
+    const nevInfo=d.nv.on?(d.nv.isFinal?`Névoa Forma FINAL (-${d.nv.cpT} CP/t, todos poderes ativos)`:`Névoa Estágio ${d.nv.stg} (-${d.nv.cpT} CP/t)`):"Névoa OFF";
+    const pr=`Mestre Naruto v1.6.0 PT-BR (2 parágrafos curtos + linha "TÁTICA: ..."). PC Zero Nv.${ST.f.lv} HP:${ST.f.hp}/${d.mHP} CP:${ST.f.cp}/${d.mCP} VEL:${d.vel} ATQ:${d.aF}/${d.aN} (${nevInfo}). Inimigos:${JSON.stringify(ST.en)}. Ação: "${act}"`;
+    const rep=await callGen(k,pr);ST.lg.push({t:"gm",tx:rep,ta:"Turno processado via IA"});
   }catch(e){ST.lg.push({t:"gm",tx:"Erro API.",ta:e.message})}
   finally{b.disabled=false;b.textContent="Enviar Ação";sv()}
 }
 function svKey(){const v=document.getElementById("api-in").value.replace(/\s+/g,"");if(v){localStorage.setItem("apx_key",v);tst("Chave salva!")}}
-async function tstKey(){const v=(document.getElementById("api-in").value||localStorage.getItem("apx_key")||"").replace(/\s+/g,"");if(!v)return tst("Cole a chave!");try{const r=await callGem(v,"Responda: OK");tst("API: "+r.slice(0,15))}catch(e){alert("Detalhe: "+e.message)}}
+async function tstKey(){const v=(document.getElementById("api-in").value||localStorage.getItem("apx_key")||"").replace(/\s+/g,"");if(!v)return tst("Cole a chave!");try{const r=await callGen(v,"Responda: OK");tst("API: "+r.slice(0,15))}catch(e){alert("Detalhe: "+e.message)}}
 function exp6B(){navigator.clipboard?.writeText(`Zero Nv.${ST.f.lv} | HP ${ST.f.hp} | CP ${ST.f.cp}`);tst("Copiado!")}
 function rstAll(){if(confirm("Resetar?")){localStorage.removeItem("apx_v4");location.reload()}}
 const sk=localStorage.getItem("apx_key");if(sk)document.getElementById("api-in").value=sk;rnd();
 </script></body></html>
-
-
